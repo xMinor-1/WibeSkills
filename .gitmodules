@@ -1,0 +1,3 @@
+[submodule "canon"]
+	path = canon
+	url = https://github.com/zamesin/Next-Move-Theory-Canon-and-Skills.git
