@@ -37,7 +37,8 @@
 
 | Чат (скилл) | Следующий чат | Гейт перед хендоффом |
 |---|---|---|
-| `market-research` *(опц.)* | `epic-prd` | — (вердикт «идея жизнеспособна») |
+| `market-research` *(опц.)* | `craft-value-proposition` (нетривиальная ценность) или `epic-prd` | — (вердикт «идея жизнеспособна») |
+| `craft-value-proposition` *(опц.)* | `epic-prd` | — (пользователь выбрал primary value prop) |
 | `epic-prd` | `epic-preview` | — |
 | `epic-preview` | `epic-tech-spec` | ⏸ визуальный осмотр preview в браузере |
 | `epic-tech-spec` | `epic-arch-review` | — |

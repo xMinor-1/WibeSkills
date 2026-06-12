@@ -13,11 +13,11 @@ WibeSkills/
 └── ROADMAP.md     ← план слияния скиллов Замесина в наш workflow
 ```
 
-**Продуктовый pipeline:** `market-research` → `craft-value-proposition`* → `epic-prd` → `epic-preview` → `epic-tech-spec` → `epic-arch-review` → `agile-coach decompose` → `task-build` → `task-cross-review` → `task-test` → `task-docs` → `task-ship` → `analytics-insights` (замыкание цикла).
+**Продуктовый pipeline:** `market-research` → `craft-value-proposition` → `epic-prd` → `epic-preview` → `epic-tech-spec` → `epic-arch-review` → `agile-coach decompose` → `task-build` → `task-cross-review` → `task-test` → `task-docs` → `task-ship` → `analytics-insights` (замыкание цикла).
 
 **Standalone:** `ask-nmt`*, `marketing-gtm`, `marketing-copywriting`, `marketing-promotion`, `marketing-smm`, `epic-legal-review`, `tracker-sync`, `pipeline-retro`, `video-distill`.
 
-\* — портируются из скиллов Замесина, см. [ROADMAP.md](ROADMAP.md).
+\* — портируется из скиллов Замесина, см. [ROADMAP.md](ROADMAP.md).
 
 ## Как подключить
 
