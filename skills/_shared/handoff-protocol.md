@@ -52,7 +52,7 @@
 | `task-ship` | `task-build` (следующая Story) | ⏸ бизнес-summary + ✅ перед деплоем |
 | `task-ship` (последняя Story эпика) | — | эпик закрыт; через 1–2 недели `analytics-insights` |
 
-**Вне pipeline (standalone, по запросу):** `epic-legal-review`, `tracker-sync`, `analytics-insights`, `pipeline-retro`, все `marketing-*`. Они не готовят хендофф в следующий скилл — заканчивают обычным коротким результатом.
+**Вне pipeline (standalone, по запросу):** `ask-nmt`, `epic-legal-review`, `tracker-sync`, `analytics-insights`, `pipeline-retro`, все `marketing-*`. Они не готовят хендофф в следующий скилл — заканчивают обычным коротким результатом.
 
 ## Реальные гейты ⏸
 
