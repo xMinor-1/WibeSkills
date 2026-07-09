@@ -29,6 +29,14 @@ cd ../<project>-<story-slug>
 
 **Любой следующий скилл Story** (`task-cross-review`, `task-test`, `task-docs`, `task-ship`, или `task-build` следующей Task) запускается в **новом чате**, но worktree уже существует на диске — `git worktree list`, `cd` в него, `git status`. Не создавай дубль. Состояние Story между чатами — в самой ветке + в `stories.md`.
 
+## Workflow-режим (`delivery-run`)
+
+В авто-оркестрации роли сдвигаются (полный контракт — [delivery-workflow.md](delivery-workflow.md)):
+- build-сабагент работает в **своём** изолированном worktree с веткой `task/<epic>/<task-slug>`, возвращает branch+sha;
+- **оркестратор** (главный агент delivery-run) сливает task-ветки в Story-ветку `feature/<epic-slug>/<story-slug>` merge --no-ff до review/test и делает cleanup task-worktree;
+- Story-worktree остаётся местом test-прогонов и ручного фоллбэка.
+Базовое правило «1 Story = 1 Story-ветка» не меняется — меняется только то, что Task-коммиты доезжают до неё через оркестратора.
+
 ## Subagents через Agent tool
 
 | Тип subagent'а | `isolation` | Почему |

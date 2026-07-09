@@ -10,6 +10,10 @@ recommended_model: sonnet
 
 Контекст — `../_shared/project-config.md` + проектный `CLAUDE.md`. Approve — `../_shared/approve-protocol.md`. Бэклог — `../_shared/backlog.md`. Хендофф — `../_shared/handoff-protocol.md`. Worktree — `../_shared/worktree-protocol.md`. Деплой — поля `DEPLOY_*` в project-config.
 
+## Режим (app-only)
+
+Прочитай `MODE` — `../_shared/mode.md`. Если `MODE: work` — **стоп, не разворачивай pipeline**: в work-режиме финальный код пишет живой программист, а боевой деплой — ручной ⏸ гейт под контролем владельца (см. инфра-блок project-config). Объясни это одной строкой и предложи `dev-handoff`. Жди решения. Если `app` или MODE не задан — пропусти этот блок, работай как обычно.
+
 ## Старт
 
 Approve **нужен**. Короткий план **на бизнес-языке**:

@@ -28,9 +28,21 @@
 - [x] Пересборка `market-research` на каркасе Замесина: intake gate с адаптивными вопросами, user-claims ledger, **selection screen** (4 измерения + existential-гейт — вместо Four Forces), pivot-ветка (альтернативные Big-Job рынки под активы), Quick/Deep режимы. Вшитая методология (~95 строк «Ядро AJTBD» + «Навигатор механик») заменена canon-first чтением в рантайме; добавлены гейты-самокритика (max 2 раунда) и step ledger; вердикт ⚠️ NARROW-семантика = «✅ с явным сужением до суб-сегмента»; ❌ + переносимые активы → предложение перезапуска на pivot-рынке. Шаблон артефакта пересобран (выжимка без терминов → гипотеза 9 полей → снимок рынка → карта сегментов → отстройка → стратегия+pivot → RAT → вердикт → леджер). *(2026-06-12 — Этап 2 закрыт)*
 - [x] Сохранить наше: AJTBD-гипотеза 9 полей, триггер + факт траты в прошлом как ось спроса (обязательный блок каждого сегмента), вердикт ✅/⚠️/❌ с честным «не стоит», хендофф в CVP/`epic-prd`, `COMM_LANGUAGE`/`COMM_STYLE`, артефакт в `DOCS_ROOT/<epic-slug>/market-research.md`
 
-## Этап 3 — обогащение существующих скиллов
+## Этап 2.5 — модель «2 оси × entry-router» + авто-delivery ✅ (2026-07-09)
 
-- [ ] `epic-prd`: **challenge-the-build gate** до интервью (5 Whys по бизнес-цели, subtraction-first, локальный vs глобальный оптимум, 2–4 альтернативы постройке) · edge-cases от разрывов Critical Chain (~90% покрытия) · ladder «фича → Core Job → Big Job → механика» для каждого требования · placement Aha Moment (максимально влево) · вход — `value-proposition.md` из CVP
+- [x] Ось **TRACK** (`fast`/`prd`/`indie`/`enterprise`) — `_shared/tracks.md`, поле `TRACK_DEFAULT` в project-config, персистентность в `epic-meta.md`
+- [x] Роутер **`kickoff`** (вход в любую задачу) + скилл **`mvp`** (fast-трек: бриф → код/прототип за один заход)
+- [x] **`delivery-run`** — авто-оркестрация task-цепочки через Workflow-сабагентов: контракт `_shared/delivery-workflow.md` (1 ран = 1 безгейтовый сегмент, single-writer stories.md, git-контракт branch+sha → Story-ветка, стоп-статусы needs_decision/needs_approve), секции «Workflow-режим» в task-{build,cross-review,test,docs}
+- [x] Единая карта маршрутизации в `handoff-protocol.md` (колонка TRACK); правки chat-lifecycle / backlog / worktree / approve-protocol
+- [x] **Два шаблона PRD** в `epic-prd`: PRD-machine (+lite-tech-spec для трека prd) и PRD-human (из эталонов X5: СРМ/Процессы, ЦП/CDP) + 3 интервью-профиля + challenge-the-build gate + ladder-проверка
+- [x] `RESEARCH_RIGOR: lite` в market-research / CVP (1 раунд гейтов для трека indie)
+- [x] communication-style: краткость, анти-слоп/эмодзи-правила, zero-slop для human-артефактов
+
+## Этап 3 — обогащение существующих скиллов (остаток)
+
+- [x] `epic-prd`: challenge-the-build gate · edge-cases от разрывов Critical Chain · ladder «фича → Core Job → Big Job → механика» *(2026-07-09, в рамках Этапа 2.5)*
+- [ ] `epic-prd`: placement Aha Moment (максимально влево) · вход — `value-proposition.md` из CVP (только для треков, где CVP был — не prd/fast)
+- [ ] `epic-prd`: конвертировать вшитые ~90 строк «Ядро AJTBD» + «Навигатор механик» в canon-first чтение (по образцу market-research) — отложено, чтобы не ломать работающий скилл без прогона
 - [ ] `marketing-gtm` + `marketing-copywriting`: 7 формул креативов на языке работ, 5 компонент Consideration Activators, 10-блочная структура лендинга как диагностика конверсии, правило «фичи — доказательство, не сообщение»
 - [ ] `marketing-promotion` / `marketing-smm`: точечная синхронизация терминов
 

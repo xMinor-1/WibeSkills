@@ -31,6 +31,7 @@ Story-ветка: feature/<epic-slug>/<story-slug>
 
 **Статусы Task / Story:** `todo` → `in-progress` → `review` → `testing` → `done` (+ `blocked`).
 Скилл, меняющий статус, правит его прямо в `stories.md` и коммитит в Story-ветку (или main для agile-coach).
+**Исключение — Workflow-режим (`delivery-run`):** статусы пишет только оркестратор между стадиями; сабагентам запись в `stories.md` запрещена (single-writer, см. [delivery-workflow.md](delivery-workflow.md)).
 
 ## Декомпозиция (двухуровневая, делает `agile-coach decompose`)
 

@@ -10,6 +10,19 @@ recommended_model: sonnet
 
 Контекст — `../_shared/project-config.md` + проектный `CLAUDE.md`. Approve — `../_shared/approve-protocol.md`. Бэклог — `../_shared/backlog.md`. Хендофф — `../_shared/handoff-protocol.md`. Worktree — `../_shared/worktree-protocol.md`.
 
+## Режим (app-only)
+
+Прочитай `MODE` — `../_shared/mode.md`. Если `MODE: work` — **стоп, не разворачивай pipeline**: в work-режиме финальный код пишет живой программист. Объясни это одной строкой и предложи `dev-handoff` (handoff-пакет) либо `epic-tech-spec` (спека для разработчика). Жди решения. Если `app` или MODE не задан — пропусти этот блок, работай как обычно.
+
+## Workflow-режим (если ты сабагент внутри `delivery-run`)
+
+Работаешь по контракту `../_shared/delivery-workflow.md`:
+- Работай в Story-worktree, который укажет промпт; статусы в `stories.md` не пиши (оркестратор).
+- **Шаг 5 (Story manual gate) не проводи** — не жди человека. Прогони prod-build + Story-e2e и верни результат: гейт задаст пользователю главный агент после завершения рана.
+- Хендофф-блоки (Шаг 6) пропусти. Лимиты авто-fix те же (3 unit / 1 e2e); исчерпаны → status `needs_decision`.
+- Верни structured output: status, что зелёное/красное, готова ли Story к manual gate.
+- TRACK=prd/fast: visual regression пропусти с пометкой (baseline preview нет), AC и events сверяй с PRD-machine.
+
 ## Старт
 
 Approve **не нужен**. Иду делать. Worktree Story уже на диске — `cd` в него.

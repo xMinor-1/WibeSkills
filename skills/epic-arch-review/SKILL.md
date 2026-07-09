@@ -10,6 +10,10 @@ recommended_model: opus
 
 Контекст — `../_shared/project-config.md` + проектный `CLAUDE.md`. Approve — `../_shared/approve-protocol.md`. Хендофф — `../_shared/handoff-protocol.md`. Хранение артефактов — `../_shared/artifact-storage.md`.
 
+## Режим (app-only)
+
+Прочитай `MODE` — `../_shared/mode.md`. Если `MODE: work` — **стоп, не разворачивай pipeline**: арх-ревью — это gate перед моей декомпозицией, а в work-режиме финальный код пишет живой программист. Объясни это одной строкой и предложи `epic-tech-spec` (спека для разработчика). Жди решения. Если `app` или MODE не задан — пропусти этот блок, работай как обычно.
+
 ## Старт
 
 Approve **не нужен**. Иду делать.

@@ -10,6 +10,14 @@ recommended_model: sonnet
 
 Контекст — `../_shared/project-config.md` + проектный `CLAUDE.md`. Approve — `../_shared/approve-protocol.md`. Бэклог — `../_shared/backlog.md`. Хендофф — `../_shared/handoff-protocol.md`. Worktree — `../_shared/worktree-protocol.md`.
 
+## Режим (app-only)
+
+Прочитай `MODE` — `../_shared/mode.md`. Если `MODE: work` — **стоп, не разворачивай pipeline**: в work-режиме финальный код пишет живой программист. Объясни это одной строкой и предложи `dev-handoff` (handoff-пакет) либо `epic-tech-spec` (спека для разработчика). Жди решения. Если `app` или MODE не задан — пропусти этот блок, работай как обычно.
+
+## Workflow-режим (внутри `delivery-run`)
+
+В авто-оркестрации **4 линзы запускает сам оркестратор** параллельными read-only сабагентами (сабагент не может спавнить вложенных) — промпты линз берёт из Шага 2 ниже, синтез и вердикт делает по Шагу 3. Сабагент-ревьюер одной линзы: читай diff Story-ветки, верни structured output с находками (file:line, severity), — без хендоффов и записи статусов. Лимит петли 2 раунда считает оркестратор; исчерпан → `needs_decision`. Контракт — `../_shared/delivery-workflow.md`.
+
 ## Старт
 
 Approve **не нужен**. Иду делать. Worktree Story уже существует на диске — `cd` в него (`git worktree list`).

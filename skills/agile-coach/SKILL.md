@@ -63,7 +63,9 @@ Approve **не нужен** для: стендап, груминг, прогре
 **Approve обязателен** — создаёт ≥3 Story/Task. **Запускай на Opus**, даже если основной agile-coach на Sonnet.
 
 #### Контекст
-Читай `DOCS_ROOT/<epic-slug>/`: `PRD.md` (обязательно), `tech-spec.md`, `arch-review.md`. Чего-то нет — стоп, скажи запустить предыдущий скилл.
+Читай `DOCS_ROOT/<epic-slug>/`: `PRD.md` (обязательно) и — по треку эпика (`epic-meta.md`, см. `../_shared/tracks.md`):
+- **TRACK=prd** — достаточно PRD-machine с lite-tech-spec-секцией; `tech-spec.md`/`arch-review.md` не требуются.
+- **indie/enterprise (или трека нет)** — `tech-spec.md` + `arch-review.md` обязательны; чего-то нет — стоп, скажи запустить предыдущий скилл.
 
 #### Двухуровневая декомпозиция
 Правила Эпик → Stories → Tasks, orchestration-граф, XL-чек — полностью в `../_shared/backlog.md` §«Декомпозиция». Не дублируй, следуй им.
@@ -86,10 +88,12 @@ Iteration: <...>, Area: <...>. ок?
 Создай `DOCS_ROOT/<epic-slug>/stories.md` по формату `../_shared/backlog.md`: Stories с AC и manual gate, Tasks с orchestration-блоком, все статусы — `todo`. Обнови строку `📦 stories.md` в блоке «📚 Артефакты эпика» в `PRD.md` на `✅ готов`.
 
 #### Хендофф
-Применяй `../_shared/handoff-protocol.md`:
+Применяй `../_shared/handoff-protocol.md`. Дефолт — авто-оркестрация:
 > Готово: эпик `<slug>` декомпозирован — N Stories, M Tasks в `DOCS_ROOT/<slug>/stories.md`
-> Следующий шаг: task-build (первая Task)
-> Промпт: `Запусти task-build для эпика "<slug>". Бэклог — DOCS_ROOT/<slug>/stories.md, начни с первой Task первой Story (Story-ветка ещё не создана).`
+> Следующий шаг: delivery-run
+> Промпт: `Запусти delivery-run для эпика "<slug>". Бэклог — DOCS_ROOT/<slug>/stories.md, TRACK — в epic-meta.md.`
+
+Пользователь хочет ручной прогон по шагам — хендофф в `task-build` (первая Task первой Story), как в ручном фоллбэке карты pipeline.
 
 ## DON'Ts
 

@@ -13,6 +13,11 @@
 
 # ЯДРО
 
+## 0. Режим работы
+
+- **MODE** — <app | work — см. `_shared/mode.md`. `app` = я довожу код до прода (полный pipeline). `work` = финальный код пишет живой программист, моя цель — проработка + PRD + прототип + handoff. Пусто = `app`.>
+- **TRACK_DEFAULT** — <fast | prd | indie | enterprise — см. `_shared/tracks.md`. Дефолтный трек для kickoff, когда задача не говорит иного. Фактический TRACK эпика живёт в `DOCS_ROOT/<epic-slug>/epic-meta.md`. Пусто = kickoff спросит.>
+
 ## 1. Продукт
 
 - **PROJECT** — <название проекта>

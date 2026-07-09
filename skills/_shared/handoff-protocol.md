@@ -8,7 +8,9 @@
 
 ## Что умеет и не умеет харнесс
 
-Скилл **не может** сам очистить чат или сам отправить сообщение в новый чат — в Claude Code нет такого инструмента. Поэтому «автоматически» на практике = скилл готовит **готовый к вставке промпт**, а пользователь одним движением открывает новый чат и вставляет его. Это самый автоматический вариант, который возможен.
+Скилл **не может** сам очистить чат или сам отправить сообщение в новый чат. Для discovery-части «автоматически» = скилл готовит **готовый к вставке промпт**, пользователь открывает новый чат и вставляет.
+
+**Delivery-часть автоматизирована по-другому:** скилл `delivery-run` прогоняет `task-build → cross-review → test → docs` сабагентами через инструмент Workflow — у каждого чистый контекст, состояние на диске, человеческие гейты сохраняются. Контракт — [delivery-workflow.md](delivery-workflow.md). Ручной путь по task-скиллам остаётся как фоллбэк.
 
 ## Формат хендофф-блока
 
@@ -31,26 +33,28 @@
 Промпт внутри блока **самодостаточен** — называет скилл, slug эпика/Story и пути к артефактам, чтобы новый чат стартовал без переписки. Пример:
 `Запусти epic-tech-spec для эпика "otp-auth". PRD и preview лежат в docs/otp-auth/.`
 
-## Карта pipeline
+## Карта pipeline (единая карта маршрутизации)
 
-Каждая стрелка = граница чата.
+Это ЕДИНСТВЕННОЕ место, где описано «какие скиллы когда». Оси: TRACK ([tracks.md](tracks.md)) и MODE ([mode.md](mode.md)) — они ссылаются сюда, копий карты нигде нет. Каждая стрелка discovery-части = граница чата.
 
-| Чат (скилл) | Следующий чат | Гейт перед хендоффом |
-|---|---|---|
-| `market-research` *(опц.)* | `craft-value-proposition` (нетривиальная ценность) или `epic-prd` | — (вердикт «идея жизнеспособна») |
-| `craft-value-proposition` *(опц.)* | `epic-prd` | — (пользователь выбрал primary value prop) |
-| `epic-prd` | `epic-preview` | — |
-| `epic-preview` | `epic-tech-spec` | ⏸ визуальный осмотр preview в браузере |
-| `epic-tech-spec` | `epic-arch-review` | — |
-| `epic-arch-review` | `agile-coach decompose` | NO-GO → возврат в `epic-tech-spec` / `epic-prd` |
-| `agile-coach decompose` | `task-build` (первая Task) | — (декомпозиция в `stories.md`) |
-| `task-build` | `task-cross-review` | — |
-| `task-cross-review` | `task-test` | CHANGES/BLOCK → возврат в `task-build` (лимит 2 раунда) |
-| `task-test` (Task не последняя в Story) | `task-docs` | — |
-| `task-docs` | `task-build` (следующая Task) | — |
-| `task-test` (последняя Task Story) | `task-ship` | ⏸ Story manual gate на prod-build |
-| `task-ship` | `task-build` (следующая Story) | ⏸ бизнес-summary + ✅ перед деплоем |
-| `task-ship` (последняя Story эпика) | — | эпик закрыт; через 1–2 недели `analytics-insights` |
+**Вход:** новая задача без явного скилла → `kickoff` (роутер: где живёт, MODE+TRACK → `epic-meta.md`). Хендофф-промпты и явные вызовы — сразу в скилл, без kickoff.
+
+| Чат (скилл) | TRACK | Следующий чат | Гейт перед хендоффом |
+|---|---|---|---|
+| `mvp` | fast | — (бриф → код/прототип → результат, один заход) | ⏸ показ перед боевым деплоем |
+| `market-research` *(опц.)* | indie / enterprise | `craft-value-proposition` или `epic-prd` | — (вердикт «идея жизнеспособна») |
+| `craft-value-proposition` *(опц.)* | indie / enterprise | `epic-prd` | — (выбран primary value prop) |
+| `epic-prd` | prd | `agile-coach decompose` (PRD-machine + lite-tech-spec-секция, без preview/arch-review) | — |
+| `epic-prd` | indie / enterprise | `epic-preview` | — |
+| `epic-preview` | indie / enterprise | `epic-tech-spec` | ⏸ визуальный осмотр preview в браузере |
+| `epic-tech-spec` | indie / enterprise | `epic-arch-review` (app) / `dev-handoff` (work) | — |
+| `epic-arch-review` (app-only) | indie / enterprise | `agile-coach decompose` | NO-GO → возврат в `epic-tech-spec` / `epic-prd` |
+| `agile-coach decompose` | prd / indie / enterprise | `delivery-run` (app) / `dev-handoff` (work) | — (декомпозиция в `stories.md`) |
+| `delivery-run` (app-only) | prd / indie / enterprise | сегментами до гейтов; Story готова → `task-ship` | ⏸ Story manual gate на prod-build |
+| `task-ship` | prd / indie / enterprise | следующий сегмент `delivery-run`; эпик закрыт → — | ⏸ бизнес-summary + ✅ перед деплоем; через 1–2 недели `analytics-insights` |
+
+**Ручной фоллбэк delivery** (вместо `delivery-run`, каждая стрелка = новый чат):
+`task-build` → `task-cross-review` (CHANGES → назад, лимит 2 раунда) → `task-test` → `task-docs` → следующая Task; последняя Task Story → ⏸ manual gate → `task-ship`.
 
 **Вне pipeline (standalone, по запросу):** `ask-nmt`, `epic-legal-review`, `tracker-sync`, `analytics-insights`, `pipeline-retro`, все `marketing-*`. Они не готовят хендофф в следующий скилл — заканчивают обычным коротким результатом.
 

@@ -10,6 +10,21 @@ recommended_model: opus
 
 Контекст — `../_shared/project-config.md` + проектный `CLAUDE.md`. Approve — `../_shared/approve-protocol.md`. Бэклог — `../_shared/backlog.md`. Хендофф — `../_shared/handoff-protocol.md`. Worktree — `../_shared/worktree-protocol.md`.
 
+## Режим (app-only)
+
+Прочитай `MODE` — `../_shared/mode.md`. Если `MODE: work` — **стоп, не разворачивай pipeline**: в work-режиме финальный код пишет живой программист. Объясни это одной строкой и предложи `dev-handoff` (handoff-пакет) либо `epic-tech-spec` (спека для разработчика). Жди решения. Если `app` или MODE не задан — пропусти этот блок, работай как обычно.
+
+## Workflow-режим (если ты сабагент внутри `delivery-run`)
+
+Промпт сказал «Workflow-режим» — работаешь по контракту `../_shared/delivery-workflow.md`:
+- **Пропусти** Шаг 2 (Story-worktree): работай в выданном изолированном worktree, коммить в своей task-ветке.
+- **Пропусти** Шаг 8 (хендофф-блок) и обновления статусов в `stories.md` (Старт п.2, Шаг 7) — статусы пишет оркестратор.
+- Approve-операции (миграции, auth/payments) **не выполняй** — верни `needs_approve`.
+- Верни structured output: status (`ok`/`needs_approve`/`blocked`), branch, sha, затронутые файлы, 1-2 строки итога.
+- TRACK=prd/fast (нет preview/tech-spec): работай от PRD-machine (lite-tech-spec-секция); UI — без preview-эталона, отметь это в итоге.
+
+Остальные шаги (контекст, реализация, events, автотесты, LOCAL_CHECK, коммит) — как написано ниже.
+
 ## Старт
 
 Approve **не нужен** для обычной задачи (локальные правки в feature-ветке).

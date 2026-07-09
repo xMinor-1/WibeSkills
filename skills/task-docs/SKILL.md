@@ -10,6 +10,10 @@ recommended_model: sonnet
 
 Контекст — `../_shared/project-config.md` + проектный `CLAUDE.md`. Approve — `../_shared/approve-protocol.md`. Бэклог — `../_shared/backlog.md`. Хендофф — `../_shared/handoff-protocol.md`.
 
+## Workflow-режим (если ты сабагент внутри `delivery-run`)
+
+По контракту `../_shared/delivery-workflow.md`: Шаг 2 (запись в stories.md) и Шаг 3 (хендофф) пропусти — верни structured output с путями трёх созданных файлов, связь с бэклогом проставит оркестратор.
+
 ## Старт
 
 Approve **не нужен**. Иду делать.
