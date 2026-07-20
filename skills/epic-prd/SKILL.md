@@ -219,8 +219,8 @@ Approve **не нужен** (read-only интервью + создание фа�
   > Промпт: `Декомпозируй эпик "<slug>". PRD — DOCS_ROOT/<slug>/PRD.md, TRACK=prd (tech-spec не нужен, lite-секция в PRD).`
 - **indie / enterprise:**
   > Готово: PRD эпика `<slug>` — `DOCS_ROOT/<slug>/PRD.md`
-  > Следующий шаг: epic-preview
-  > Промпт: `Запусти epic-preview для эпика "<slug>". PRD — в DOCS_ROOT/<slug>/PRD.md.`
+  > Следующий шаг: ux-patterns (паттерн-контракт перед прототипом; light-режим — минуты, если база уже накоплена). Пропустить — только по явному «без исследования», тогда сразу epic-preview.
+  > Промпт: `Запусти ux-patterns для эпика "<slug>". PRD — в DOCS_ROOT/<slug>/PRD.md.`
 
 ## Принципы
 

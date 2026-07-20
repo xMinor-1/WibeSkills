@@ -1,6 +1,6 @@
 # Хранение артефактов эпика
 
-Применяется в `market-research`, `epic-prd`, `epic-preview`, `epic-tech-spec`, `epic-arch-review`, `agile-coach decompose`.
+Применяется в `market-research`, `epic-prd`, `ux-patterns`, `epic-preview`, `epic-tech-spec`, `epic-arch-review`, `agile-coach decompose`.
 
 **Артефакты живут на диске — это единственный источник правды.** Трекер (Notion / Linear / Jira) не нужен ядру pipeline. Если он подключён — зеркалит на диск опциональный скилл `tracker-sync` по запросу, ядро про трекер ничего не знает.
 
@@ -10,6 +10,7 @@
 DOCS_ROOT/<epic-slug>/
 ├── market-research.md   ← market-research (опц.)
 ├── PRD.md               ← epic-prd
+├── ux-patterns.md       ← ux-patterns — паттерн-контракт для preview
 ├── preview/index.html   ← epic-preview
 ├── tech-spec.md         ← epic-tech-spec
 ├── arch-review.md       ← epic-arch-review
@@ -19,6 +20,7 @@ DOCS_ROOT/<epic-slug>/
 
 Документация фичи после релиза — отдельно: `DOCS_ROOT/<feature-slug>/{user,support,analytics}.md`.
 Инсайты аналитики — `DOCS_ROOT/insights/<YYYY-MM-DD>.md`.
+База UX-паттернов проекта (накопительная, ведёт `ux-patterns`) — `DOCS_ROOT/ux-foundation/pattern-library.md`.
 
 ## Навигация по эпику
 
@@ -27,6 +29,7 @@ DOCS_ROOT/<epic-slug>/
 ```
 ## 📚 Артефакты эпика
 - 📄 PRD.md — ✅ готов
+- 🧭 ux-patterns.md — будет создан ux-patterns
 - 🎨 preview/index.html — будет создан epic-preview
 - 🔧 tech-spec.md — будет создан epic-tech-spec
 - 🏗 arch-review.md — будет создан epic-arch-review

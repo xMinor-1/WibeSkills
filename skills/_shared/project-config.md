@@ -88,6 +88,11 @@
 - **TARGET_SEGMENTS** — <ICP / сегменты аудитории>
 - **MARKETING_DOCS** — <папка маркетинг-артефактов>
 
+## F. UX-паттерны (`ux-patterns`, `epic-preview`, `mvp`)
+
+- **PLATFORM_FOCUS** — <mobile-web | iOS | Android | desktop-web | mix — основная платформа для подбора паттернов>
+- **UX_FOUNDATION_DOC** — <путь к базе паттернов | пусто = `DOCS_ROOT/ux-foundation/pattern-library.md` | свой док, напр. STYLE-GUIDE дизайн-системы>
+
 ## E. Методология NMT / AJTBD (`market-research`, `craft-value-proposition`, `ask-nmt`, `epic-prd`, `marketing-*`)
 
 - **NMT_CANON_ROOT** — <путь к канону | пусто = дефолт `<библиотека скиллов>/../canon/Next-Move-Theory-Canon/` (submodule в WibeSkills)>

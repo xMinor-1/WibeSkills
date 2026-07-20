@@ -45,7 +45,8 @@
 | `market-research` *(опц.)* | indie / enterprise | `craft-value-proposition` или `epic-prd` | — (вердикт «идея жизнеспособна») |
 | `craft-value-proposition` *(опц.)* | indie / enterprise | `epic-prd` | — (выбран primary value prop) |
 | `epic-prd` | prd | `agile-coach decompose` (PRD-machine + lite-tech-spec-секция, без preview/arch-review) | — |
-| `epic-prd` | indie / enterprise | `epic-preview` | — |
+| `epic-prd` | indie / enterprise | `ux-patterns` (пропуск — по явному «без исследования» → `epic-preview`) | — |
+| `ux-patterns` | indie / enterprise | `epic-preview` | — (паттерн-контракт в `ux-patterns.md`; режим light — минуты, если база паттернов уже накоплена) |
 | `epic-preview` | indie / enterprise | `epic-tech-spec` | ⏸ визуальный осмотр preview в браузере |
 | `epic-tech-spec` | indie / enterprise | `epic-arch-review` (app) / `dev-handoff` (work) | — |
 | `epic-arch-review` (app-only) | indie / enterprise | `agile-coach decompose` | NO-GO → возврат в `epic-tech-spec` / `epic-prd` |
