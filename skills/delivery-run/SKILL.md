@@ -30,8 +30,12 @@ recommended_model: opus
    (у скрипта нет FS-доступа). Стадии и промпты сабагентов — по контракту delivery-workflow.md
    (цель = AC + touches + deps + пути к артефактам; указание читать SKILL.md стадии,
    секция «Workflow-режим»; shape structured output).
+   `EXECUTOR` ≠ `inherit` → стадия build разворачивается в **package → dispatch → verify**
+   (delivery-workflow.md, раздел «Стадия dispatch»); `external:<команда>` исполняется через Bash
+   оркестратором, а не сабагентом.
 2. Запусти ран. Между стадиями: сливай task-ветки в Story-ветку (merge --no-ff),
-   обновляй статусы в stories.md (single-writer — только ты).
+   обновляй статусы в stories.md (single-writer — только ты), дописывай строку по Task
+   в `DOCS_ROOT/<epic-slug>/delivery-log.jsonl` (метрики — executor-protocol.md).
 3. Ран завершился — разбери результат:
    - все стадии `ok` → сегмент готов;
    - `needs_decision` / `needs_approve` / `blocked` → доложи на бизнес-языке, жди решения;

@@ -87,6 +87,20 @@ Iteration: <...>, Area: <...>. ок?
 #### После approve
 Создай `DOCS_ROOT/<epic-slug>/stories.md` по формату `../_shared/backlog.md`: Stories с AC и manual gate, Tasks с orchestration-блоком, все статусы — `todo`. Обнови строку `📦 stories.md` в блоке «📚 Артефакты эпика» в `PRD.md` на `✅ готов`.
 
+#### Заготовки пакетов (только если `EXECUTOR` ≠ `inherit`)
+
+Код будет писать не тот, кто проектировал → на каждую Task создай заготовку пакета
+`DOCS_ROOT/<epic-slug>/tasks/<task-slug>.md` по шаблону `../_shared/templates/task-packet.md`
+(протокол — `../_shared/executor-protocol.md`) и добавь ссылку в строку Task.
+
+Заполняешь то, что известно на этапе декомпозиции: цель, AC уровня Task, разрешённые пути
+(= `touches`), выдержки из PRD/tech-spec **скопированным текстом**, правила проекта, запреты,
+формат ответа. Две секции оставляешь помеченными `TODO: contract-стадия` — «Контракт интерфейсов»
+и «Красные тесты»: на момент декомпозиции кода ещё нет, сигнатуры зависят от предыдущих Task.
+Их допишет `task-build` в режиме contract перед самой реализацией.
+
+`EXECUTOR: inherit` — заготовки не создавай, это лишняя работа.
+
 #### Хендофф
 Применяй `../_shared/handoff-protocol.md`. Дефолт — авто-оркестрация:
 > Готово: эпик `<slug>` декомпозирован — N Stories, M Tasks в `DOCS_ROOT/<slug>/stories.md`

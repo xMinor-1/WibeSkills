@@ -51,6 +51,17 @@ Story-ветка: feature/<epic-slug>/<story-slug>
 
 У каждой Task в `stories.md`: `group` (parallel group), `touches` (файлы/папки), `deps` (slug'и Task, от которых зависит). `task-build` при выборе «следующей Task» уважает граф: Task с незакрытыми deps недоступна; несколько Task одной group с чистыми deps можно брать параллельно (в разных чатах/worktree).
 
+## Ссылка на task-packet (опционально)
+
+Если код пишет не тот, кто проектировал (`EXECUTOR` ≠ `inherit` в project-config), у Task есть
+самодостаточный пакет `DOCS_ROOT/<epic-slug>/tasks/<task-slug>.md` — протокол
+[executor-protocol.md](executor-protocol.md). Строка Task остаётся индексом, в конец добавляется
+ссылка — формат обратно совместим, старые бэклоги без пакетов читаются как раньше:
+
+```markdown
+- [ ] A1 schema-users — `todo` — group A (parallel) — touches: db/schema — deps: — — [пакет](./tasks/A1-schema-users.md)
+```
+
 ## Auto-rollup статуса (делает `agile-coach`)
 
 При изменении статуса Task — пересчитай родительскую Story, потом — пометку эпика в блоке «📚 Артефакты». Алгоритм (одинаков для Story по Tasks и для эпика по Stories):

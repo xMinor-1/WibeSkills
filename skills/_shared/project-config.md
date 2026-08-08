@@ -40,6 +40,8 @@
 - **TEST_RUNNER** — <команда юнит-тестов>
 - **E2E** — <команда e2e | нет>
 - **LOCAL_CHECK** — <линт / typecheck / build перед коммитом>
+- **VERIFY_CMD** — <точечная проверка одной Task по её пакету: тесты Task + typecheck + diff в границах `Разрешено править`. Принимает task-slug, отдаёт exit-code + JSON. Пусто = проверяем полным `LOCAL_CHECK` (медленно, без проверки границ). См. `_shared/executor-protocol.md`.>
+- **EXECUTOR** — <кто пишет код на стадии fill: `inherit` (та же модель, что оркестратор — дефолт) | `sonnet` / `haiku` | `external:<команда>` (внешний CLI, получает путь к пакету аргументом). Не-`inherit` требует task-packet на каждую Task.>
 - **REPO_URL** — <url репозитория>
 - **MAIN_BRANCH** — <main | master>
 
@@ -57,6 +59,8 @@
 - **WIP_LIMIT** — <число параллельных Story, напр. 5>
 
 Бэклог эпика — файл `<DOCS_ROOT>/<epic-slug>/stories.md`.
+Пакеты Task (если `EXECUTOR` ≠ `inherit`) — `<DOCS_ROOT>/<epic-slug>/tasks/<task-slug>.md`.
+Лог прогонов delivery — `<DOCS_ROOT>/<epic-slug>/delivery-log.jsonl`.
 
 ---
 
