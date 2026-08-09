@@ -42,6 +42,8 @@
 - **LOCAL_CHECK** — <линт / typecheck / build перед коммитом>
 - **VERIFY_CMD** — <точечная проверка одной Task по её пакету: тесты Task + typecheck + diff в границах `Разрешено править`. Принимает task-slug, отдаёт exit-code + JSON. Пусто = проверяем полным `LOCAL_CHECK` (медленно, без проверки границ). См. `_shared/executor-protocol.md`.>
 - **EXECUTOR** — <кто пишет код на стадии fill: `inherit` (та же модель, что оркестратор — дефолт) | `sonnet` / `haiku` | `external:<команда>` (внешний CLI, получает путь к пакету аргументом). Не-`inherit` требует task-packet на каждую Task.>
+- **EXECUTOR_EFFORT** — <стартовая ступень лестницы: `medium` (дефолт) | `low` | `high`. Ретрай после красного `verify` поднимает на ступень автоматически; см. `_shared/executor-protocol.md` §«Модель и effort».>
+- **REVIEWER** — <модель модельных линз cross-review. Обязана быть **выше** `EXECUTOR`. Пусто = топ-модель сессии, effort `high`.>
 - **REPO_URL** — <url репозитория>
 - **MAIN_BRANCH** — <main | master>
 

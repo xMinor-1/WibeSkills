@@ -21,8 +21,8 @@ Workflow не умеет ждать человека посреди рана. П
 | Роль | Кто | Что делает |
 |---|---|---|
 | Оркестратор | главный агент (скилл delivery-run) | читает stories.md, генерирует скрипт (граф — константой: у скрипта нет FS-доступа), запускает ран, сливает git, пишет статусы, держит гейты |
-| build-сабагент | opus, свой worktree | код одной Task по SKILL.md task-build (Workflow-режим), коммит в task-ветке, возвращает branch+sha |
-| review-сабагенты | 4 параллельных, read-only | линзы task-cross-review по diff Story-ветки; **их запускает оркестратор** — сабагент не может спавнить вложенных |
+| build-сабагент | `EXECUTOR`, свой worktree | код одной Task по SKILL.md task-build (Workflow-режим), коммит в task-ветке, возвращает branch+sha |
+| review-сабагенты | `REVIEWER` (строго выше исполнителя), 2 параллельных, read-only | линзы task-cross-review по diff Story-ветки; **их запускает оркестратор** — сабагент не может спавнить вложенных |
 | test-сабагент | sonnet, Story-worktree | task-test (Workflow-режим), последовательно после слива |
 | docs-сабагент | sonnet | task-docs (Workflow-режим) |
 
@@ -49,7 +49,13 @@ Workflow не умеет ждать человека посреди рана. П
 | **package** | топ-модель, `task-build` режим contract | дописывает пакет Task: контракт интерфейсов + красные тесты (прогнаны, падают), коммит в task-ветку |
 | **dispatch** | исполнитель из `EXECUTOR` | получает **только** путь к пакету и worktree; делает тесты зелёными |
 | **verify** | скрипт `VERIFY_CMD` | точечные тесты + typecheck + diff в границах «Разрешено править»; exit-code = вердикт |
-| **review** | 4 линзы `task-cross-review` | как раньше, плюс BLOCK на выход за границы пакета |
+| **review** | 2 линзы `task-cross-review` на модели `REVIEWER` | безопасность/юр-режим + соответствие AC; BLOCK на выход за границы пакета |
+
+**Частота стадий.** `package` → `dispatch` → `verify` идут на **каждую Task**. Стадия `review`
+собирается **на Story целиком** — линзы читают связный diff Story-ветки один раз, а не по разу
+на каждую из её Task. Исключение: Task с approve-поверхностью (миграции, auth/payments) ревьюится
+сразу. Лестница `EXECUTOR_EFFORT` (ретрай поднимает ступень) — в
+[executor-protocol.md](executor-protocol.md).
 
 Значения `EXECUTOR` и как их исполняет оркестратор:
 
