@@ -2,3 +2,6 @@
 Thumbs.db
 *.swp
 *.local.md
+
+# рабочие бэкапы кадров прогонов — не часть библиотеки
+skills/*/backups/
