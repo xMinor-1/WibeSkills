@@ -9,6 +9,8 @@ recommended_model: opus
 Один чат: бриф → сборка → результат. Без discovery-шагов и PRD.
 Опирается на [tracks.md](../_shared/tracks.md) (TRACK=fast), [mode.md](../_shared/mode.md),
 [communication-style.md](../_shared/communication-style.md).
+Всё, что всплыло по ходу и осталось за скоупом, — задачей в GitHub Issues проекта:
+[backlog.md](../_shared/backlog.md), раздел «Todo-лист проекта в GitHub Issues».
 
 ## Шаг 1 — бриф (всегда, даже если «и так понятно»)
 

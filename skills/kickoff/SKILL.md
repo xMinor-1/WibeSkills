@@ -9,6 +9,8 @@ recommended_model: sonnet
 Лёгкий скилл маршрутизации: 4 вопроса → запись решения → передача в первый скилл.
 Без методологии в теле. Опирается на [tracks.md](../_shared/tracks.md), [mode.md](../_shared/mode.md),
 карту pipeline в [handoff-protocol.md](../_shared/handoff-protocol.md).
+Задачи и идеи вне текущего эпика идут в GitHub Issues проекта и на доску — правило
+в [backlog.md](../_shared/backlog.md), раздел «Todo-лист проекта в GitHub Issues».
 
 ## Когда НЕ запускаться (правило обхода)
 
