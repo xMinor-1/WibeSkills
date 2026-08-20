@@ -19,7 +19,9 @@ WibeSkills/
 
 **Два PRD:** `epic-prd` имеет два шаблона — PRD-machine (инженерный контракт для агентов/кода) и PRD-human (документ-решение для людей, формат эталонов X5). Выбор — по треку.
 
-**Standalone:** `ask-nmt`, `triz-resolve`, `helpx5`, `go`/`goon`, `response-optimizer`, `marketing-gtm`, `marketing-copywriting`, `marketing-promotion`, `marketing-smm`, `epic-legal-review`, `tracker-sync`, `todo`, `pipeline-retro`, `video-distill`.
+**Standalone:** `ask-nmt`, `triz-resolve`, `helpx5`, `go`/`goon`, `response-optimizer`, `marketing-gtm`, `marketing-copywriting`, `marketing-promotion`, `marketing-smm`, `epic-legal-review`, `tracker-sync`, `todo`, `pipeline-retro`, `video-distill`, `watch`.
+
+Полный каталог — все 34 скилла с описанием в одну строку — в [skills/README.md](skills/README.md).
 
 ## Как подключить
 

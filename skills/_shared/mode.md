@@ -25,7 +25,7 @@ MODE — первая из двух осей поведения. Вторая, �
 
 **Общие для обоих режимов** (нейтральны к MODE, ничего не меняют):
 `kickoff`, `market-research`, `craft-value-proposition`, `ask-nmt`, `triz-resolve`, `epic-prd`,
-`ux-patterns`, `agile-coach`, все `marketing-*`, `video-distill`, `analytics-insights`,
+`ux-patterns`, `agile-coach`, все `marketing-*`, `video-distill`, `watch`, `analytics-insights`,
 `tracker-sync`, `todo`, `pipeline-retro`, `epic-legal-review`.
 
 **Адаптируются под MODE** (меняют поведение/адресата):
