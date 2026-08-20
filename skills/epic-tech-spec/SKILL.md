@@ -30,6 +30,8 @@ Approve **не нужен**. Иду делать.
 
 Прочитай `templates/tech-spec.md`. Создай `DOCS_ROOT/<epic-slug>/tech-spec.md` по структуре шаблона.
 
+В work-режиме пиши спеку как для внешнего программиста: стек, инфра, эндпоинты — читатель проекта не знает (`../_shared/mode.md`).
+
 ## Шаг 3: Опора на существующий код
 
 - Не выдумывай паттерны — посмотри как сделаны похожие фичи (`ARCH_PATTERN`).
@@ -58,10 +60,16 @@ Approve **не нужен**. Иду делать.
 
 ## Шаг 7: Хендофф
 
-Применяй `../_shared/handoff-protocol.md`:
-> Готово: tech-spec эпика `<slug>` — `DOCS_ROOT/<slug>/tech-spec.md`
-> Следующий шаг: epic-arch-review
-> Промпт: `Запусти epic-arch-review для эпика "<slug>". PRD, preview, tech-spec — в DOCS_ROOT/<slug>/.`
+Применяй `../_shared/handoff-protocol.md`. Развилка по `MODE` (`../_shared/mode.md`, карта — `../_shared/handoff-protocol.md`):
+
+- **`app`** (или MODE не задан) — следующий шаг `epic-arch-review`:
+  > Готово: tech-spec эпика `<slug>` — `DOCS_ROOT/<slug>/tech-spec.md`
+  > Следующий шаг: epic-arch-review
+  > Промпт: `Запусти epic-arch-review для эпика "<slug>". PRD, preview, tech-spec — в DOCS_ROOT/<slug>/.`
+- **`work`** — следующий шаг `dev-handoff`:
+  > Готово: tech-spec эпика `<slug>` — `DOCS_ROOT/<slug>/tech-spec.md`
+  > Следующий шаг: dev-handoff
+  > Промпт: `Запусти dev-handoff для эпика "<slug>". PRD, preview, tech-spec — в DOCS_ROOT/<slug>/.`
 
 ## Принципы
 

@@ -41,15 +41,15 @@
 ## Этап 3 — обогащение существующих скиллов (остаток)
 
 - [x] `epic-prd`: challenge-the-build gate · edge-cases от разрывов Critical Chain · ladder «фича → Core Job → Big Job → механика» *(2026-07-09, в рамках Этапа 2.5)*
-- [ ] `epic-prd`: placement Aha Moment (максимально влево) · вход — `value-proposition.md` из CVP (только для треков, где CVP был — не prd/fast)
-- [ ] `epic-prd`: конвертировать вшитые ~90 строк «Ядро AJTBD» + «Навигатор механик» в canon-first чтение (по образцу market-research) — отложено, чтобы не ломать работающий скилл без прогона
+- [x] `epic-prd`: placement Aha Moment (максимально влево) · вход — `value-proposition.md` из CVP (только для треков, где CVP был — не prd/fast) *(2026-08-20)*
+- [x] `epic-prd`: конвертировать вшитые ~90 строк «Ядро AJTBD» + «Навигатор механик» в canon-first чтение (по образцу market-research) *(2026-08-20)*
 - [ ] `marketing-gtm` + `marketing-copywriting`: 7 формул креативов на языке работ, 5 компонент Consideration Activators, 10-блочная структура лендинга как диагностика конверсии, правило «фичи — доказательство, не сообщение»
 - [ ] `marketing-promotion` / `marketing-smm`: точечная синхронизация терминов
 
 ## Этап 4 — терминологическая ревизия
 
-- [ ] Все скиллы: «активирующее знание (3 части)» → **Consideration Activators (5 компонент)**, ввести Aha Moment как операционное понятие, «гедонистическая адаптация» → Red Queen, убрать остатки Four Forces
-- [ ] Ссылки на `notes/AJTBD/...` → canon-first + `COURSE_NOTES_ROOT` (graceful degradation)
+- [x] Все скиллы: «активирующее знание (3 части)» → **Consideration Activators (5 компонент)**, ввести Aha Moment как операционное понятие, «гедонистическая адаптация» → Red Queen, убрать остатки Four Forces *(2026-08-20 — pipeline-скиллы и `_shared` чисты; `marketing-*` и `analytics-insights` оставлены на старой терминологии намеренно — синхронизируются при первой реальной маркетинг/аналитика-задаче вместе с пунктами Этапа 3)*
+- [x] Ссылки на `notes/AJTBD/...` → canon-first + `COURSE_NOTES_ROOT` (graceful degradation) *(2026-08-20 — вхождений в скиллах не осталось)*
 - [ ] `ajtbd-check` (user-level, `~/.claude/skills`): канон — первичный источник судейства, theory-canon.md курса — приватный второй слой
 
 ## Этап 5 — публикация
@@ -57,7 +57,7 @@
 - [ ] README двуязычный (ru основной + en-интро), полный legal-текст CC BY-NC-SA 4.0
 - [ ] Аудит: никаких приватных путей/данных/курс-материалов в истории
 - [ ] Репо → public
-- [ ] Удалить `Work/канон/` (заменён submodule)
+- [x] Удалить `Work/канон/` (заменён submodule) *(2026-08-20 — каталога больше нет)*
 
 ## Этап 6 — передача кодинга внешним исполнителям (2026-08-08)
 

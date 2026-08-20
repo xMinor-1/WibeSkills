@@ -77,7 +77,7 @@ Story-ветка: feature/<epic-slug>/<story-slug>
 
 ## WIP
 
-WIP-лимит на `in-progress` — задаётся в `project-config.md` (по умолчанию 7), считается по всем `stories.md` всех эпиков.
+Лимит на число Task в статусе `in-progress` — `WIP_LIMIT` из `project-config.md` (дефолт 7), считается по всем `stories.md` всех эпиков.
 
 ## Опциональное зеркало в трекер
 

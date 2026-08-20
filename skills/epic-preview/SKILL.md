@@ -10,6 +10,10 @@ recommended_model: sonnet
 
 Контекст — `../_shared/project-config.md` + проектный `CLAUDE.md`. Approve — `../_shared/approve-protocol.md`. Хендофф — `../_shared/handoff-protocol.md`. Хранение артефактов — `../_shared/artifact-storage.md`.
 
+## Режим
+
+Прочитай `MODE` — `../_shared/mode.md`. При `MODE: work` два отличия: PRD опционален (нет PRD — работай по брифу из чата, без стопа в Шаге 1) и пропускается шаг 6.1 — копия прототипа в e2e-фикстуры (visual regression в work-контуре не гоняется). Если `app` или MODE не задан — работай как обычно.
+
 ## Старт
 
 Approve **не нужен** (создание HTML в `DOCS_ROOT/`). Иду делать сразу.
@@ -58,7 +62,7 @@ Approve **не нужен** (создание HTML в `DOCS_ROOT/`). Иду де
 
 ## Шаг 6: Реальный гейт ⏸
 
-Открой файл локально (`open DOCS_ROOT/<epic-slug>/preview/index.html`).
+Открой файл в браузере: `xdg-open DOCS_ROOT/<epic-slug>/preview/index.html` (Linux; на Mac — `open`).
 
 > «Preview готов: `DOCS_ROOT/<epic-slug>/preview/index.html`. Открой в браузере и скажи: ✅ ок / переделай / правки.»
 
@@ -69,7 +73,7 @@ Approve **не нужен** (создание HTML в `DOCS_ROOT/`). Иду де
 После «переделай» — переделываю **полностью**, не по чуть-чуть. Эталон ещё не зафиксирован. Гейт повторяется.
 
 После «✅ ок» preview становится эталоном:
-1. Скопируй финальный HTML в `CODE_ROOT/e2e/preview-fixtures/<epic-slug>/` (одним файлом или по экранам) — это baseline для visual regression в `task-test`.
+1. Скопируй финальный HTML в `CODE_ROOT/e2e/preview-fixtures/<epic-slug>/` (одним файлом или по экранам) — это baseline для visual regression в `task-test`. При `MODE: work` — пропусти.
 2. Готовь хендофф.
 
 ## Шаг 7: Хендофф

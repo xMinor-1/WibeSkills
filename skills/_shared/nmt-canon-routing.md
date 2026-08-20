@@ -19,7 +19,7 @@
 | 8 элементов работы, критерии успеха (направление + уровень), вопросы для интервью по элементам | `Advanced-Jobs-To-Be-Done/job-structure.md` |
 | Граф работ: уровни Big/Core/Small/Micro (относительны охвату продукта), подъём на уровень, Previous/Next Job | `Advanced-Jobs-To-Be-Done/job-graph.md` |
 | Типы работ: Regular / Orientation / Tax / Fake / Emotional / Viral; частотность | `Advanced-Jobs-To-Be-Done/job-types-and-properties.md` |
-| Critical Chain: разрывы, циклы, hand-off'ы, placement Aha Moment, отвал как разрыв цепи | `Advanced-Jobs-To-Be-Done/critical-chain.md` |
+| Critical Chain of Jobs (Critical Chain): разрывы, циклы, hand-off'ы, placement Aha Moment, отвал как разрыв цепи | `Advanced-Jobs-To-Be-Done/critical-chain.md` |
 | Ценность: формула `P(outcome) × Outcome − Cost`, 6 измерений стоимости, 8 порядков приоритета критериев, карта «критерии → механики», Red Queen | `Advanced-Jobs-To-Be-Done/value-creation.md` |
 | Каталог механик создания ценности (публичные ~26; через `COURSE_NOTES_ROOT` — 82) | `Advanced-Jobs-To-Be-Done/value-creation-mechanics.md` |
 | Смена поведения: свитчинг = замена графа работ, привычка (не воевать в лоб), страхи, 7 триггеров восприимчивости | `Advanced-Jobs-To-Be-Done/behaviour-change.md` |

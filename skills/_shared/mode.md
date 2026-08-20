@@ -24,15 +24,17 @@ MODE — первая из двух осей поведения. Вторая, �
 ## Что в каком контуре
 
 **Общие для обоих режимов** (нейтральны к MODE, ничего не меняют):
-`market-research`, `craft-value-proposition`, `ask-nmt`, `epic-prd`, `agile-coach`,
-все `marketing-*`, `video-distill`, `analytics-insights`, `tracker-sync`, `pipeline-retro`, `epic-legal-review`.
+`kickoff`, `market-research`, `craft-value-proposition`, `ask-nmt`, `triz-resolve`, `epic-prd`,
+`ux-patterns`, `agile-coach`, все `marketing-*`, `video-distill`, `analytics-insights`,
+`tracker-sync`, `pipeline-retro`, `epic-legal-review`.
 
 **Адаптируются под MODE** (меняют поведение/адресата):
+- `mvp` — оба контура, разный выход: в `app` сразу код с деплоем, в `work` кликабельный прототип.
 - `epic-preview` — в `work` не требует PRD и не копирует baseline в e2e-фикстуры; быстрый макет для согласования.
 - `epic-tech-spec` — в `work` пишется как спека **для внешнего программиста** (стек, схема, эндпоинты, инфра), а не внутренний план.
 
 **Только `app`** (в `work` не разворачиваются — см. guard ниже):
-`epic-arch-review`, `task-build`, `task-test`, `task-cross-review`, `task-ship`.
+`epic-arch-review`, `delivery-run`, `task-build`, `task-test`, `task-cross-review`, `task-docs`, `task-ship`.
 
 **Только `work`**:
 `dev-handoff` — собирает пакет для живого разработчика (PRD + прототип + tech-spec + инфра-контекст).

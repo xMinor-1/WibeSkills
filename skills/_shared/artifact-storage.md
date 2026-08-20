@@ -8,13 +8,18 @@
 
 ```
 DOCS_ROOT/<epic-slug>/
+├── epic-meta.md         ← kickoff (или первый скилл цепочки) — TRACK/MODE эпика (tracks.md)
+├── brief.md             ← mvp — бриф fast-трека, вместо PRD
 ├── market-research.md   ← market-research (опц.)
+├── value-proposition.md ← craft-value-proposition (опц.)
 ├── PRD.md               ← epic-prd
 ├── ux-patterns.md       ← ux-patterns — паттерн-контракт для preview
 ├── preview/index.html   ← epic-preview
 ├── tech-spec.md         ← epic-tech-spec
 ├── arch-review.md       ← epic-arch-review
 ├── stories.md           ← agile-coach decompose — файловый бэклог: Stories + Tasks + статусы
+├── tasks/<task-slug>.md ← пакеты Task (executor-protocol, при `EXECUTOR` ≠ `inherit`)
+├── delivery-log.jsonl   ← delivery-run — лог прогонов по Task
 └── reviews/<task-slug>.md  ← task-cross-review
 ```
 

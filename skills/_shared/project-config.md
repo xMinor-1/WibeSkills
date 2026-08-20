@@ -58,7 +58,7 @@
 ## 5. Бэклог и артефакты
 
 - **DOCS_ROOT** — <папка артефактов, напр. docs/>
-- **WIP_LIMIT** — <число параллельных Story, напр. 5>
+- **WIP_LIMIT** — <макс. число Task в статусе `in-progress` одновременно, по всем эпикам. Пусто = 7. Потребитель — `agile-coach`, см. `_shared/backlog.md` §WIP.>
 
 Бэклог эпика — файл `<DOCS_ROOT>/<epic-slug>/stories.md`.
 Пакеты Task (если `EXECUTOR` ≠ `inherit`) — `<DOCS_ROOT>/<epic-slug>/tasks/<task-slug>.md`.

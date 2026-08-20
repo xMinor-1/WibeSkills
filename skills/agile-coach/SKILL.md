@@ -102,12 +102,19 @@ Iteration: <...>, Area: <...>. ок?
 `EXECUTOR: inherit` — заготовки не создавай, это лишняя работа.
 
 #### Хендофф
-Применяй `../_shared/handoff-protocol.md`. Дефолт — авто-оркестрация:
+Применяй `../_shared/handoff-protocol.md`. Ветка по `MODE` (`../_shared/mode.md`):
+
+**MODE=app (или не задан)** — дефолт авто-оркестрация:
 > Готово: эпик `<slug>` декомпозирован — N Stories, M Tasks в `DOCS_ROOT/<slug>/stories.md`
 > Следующий шаг: delivery-run
 > Промпт: `Запусти delivery-run для эпика "<slug>". Бэклог — DOCS_ROOT/<slug>/stories.md, TRACK — в epic-meta.md.`
 
-Пользователь хочет ручной прогон по шагам — хендофф в `task-build` (первая Task первой Story), как в ручном фоллбэке карты pipeline.
+**MODE=work** — финальный код пишет живой программист, delivery-контур не разворачивай:
+> Готово: эпик `<slug>` декомпозирован — N Stories, M Tasks в `DOCS_ROOT/<slug>/stories.md`
+> Следующий шаг: dev-handoff
+> Промпт: `Запусти dev-handoff для эпика "<slug>". Артефакты — в DOCS_ROOT/<slug>/.`
+
+Пользователь хочет ручной прогон по шагам (app) — хендофф в `task-build` (первая Task первой Story), как в ручном фоллбэке карты pipeline.
 
 ## DON'Ts
 

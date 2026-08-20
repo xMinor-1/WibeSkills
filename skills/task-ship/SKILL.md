@@ -80,8 +80,12 @@ Health красный — **rollback** (откат процесса / `git rever
 
 Применяй `../_shared/handoff-protocol.md`.
 
-- **Эпик ещё не закрыт (есть Story не в `done`)** — следующий шаг `task-build` следующей Story:
+- **Эпик ещё не закрыт (есть Story не в `done`)** — дефолт: следующий сегмент `delivery-run` (карта pipeline):
   > Готово: Story `<story-slug>` задеплоена — `PROD_URL`, smoke зелёный, бэклог обновлён
+  > Следующий шаг: delivery-run (следующий сегмент)
+  > Промпт: `Запусти delivery-run для эпика "<epic-slug>" — следующий сегмент. Бэклог — DOCS_ROOT/<epic-slug>/stories.md, начни со следующей todo-Story.`
+
+  Ручной фоллбэк (пользователь ведёт delivery по шагам) — `task-build` следующей Story:
   > Следующий шаг: task-build (следующая Story)
   > Промпт: `Запусти task-build для эпика "<epic-slug>" — следующая Story. Бэклог — DOCS_ROOT/<epic-slug>/stories.md, начни с первой Task следующей todo-Story (новый worktree). agile-coach подскажет приоритет, если непонятно.`
 
