@@ -26,7 +26,7 @@ MODE — первая из двух осей поведения. Вторая, �
 **Общие для обоих режимов** (нейтральны к MODE, ничего не меняют):
 `kickoff`, `market-research`, `craft-value-proposition`, `ask-nmt`, `triz-resolve`, `epic-prd`,
 `ux-patterns`, `agile-coach`, все `marketing-*`, `video-distill`, `analytics-insights`,
-`tracker-sync`, `pipeline-retro`, `epic-legal-review`.
+`tracker-sync`, `todo`, `pipeline-retro`, `epic-legal-review`.
 
 **Адаптируются под MODE** (меняют поведение/адресата):
 - `mvp` — оба контура, разный выход: в `app` сразу код с деплоем, в `work` кликабельный прототип.

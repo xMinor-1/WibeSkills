@@ -29,6 +29,7 @@ Standalone-скиллы — каждый свой короткий чат, за�
 - `video-distill` — конспект транскрипта по запросу
 - `epic-legal-review` — по запросу
 - `tracker-sync` — по запросу
+- `todo` — быстрый захват задач в GitHub Issues, одиночно или пачкой
 - `analytics-insights` — через 1–2 недели после релиза
 - `pipeline-retro` — мета-ретро
 - любой `marketing-*`

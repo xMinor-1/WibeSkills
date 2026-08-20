@@ -57,7 +57,7 @@
 **Ручной фоллбэк delivery** (вместо `delivery-run`, каждая стрелка = новый чат):
 `task-build` → `task-cross-review` (CHANGES → назад, лимит 2 раунда) → `task-test` → `task-docs` → следующая Task; последняя Task Story → ⏸ manual gate → `task-ship`.
 
-**Вне pipeline (standalone, по запросу):** `ask-nmt`, `triz-resolve`, `video-distill`, `helpx5`, `epic-legal-review`, `tracker-sync`, `analytics-insights`, `pipeline-retro`, все `marketing-*`, `go`/`goon` (утилиты фоновых сессий), `response-optimizer` (хук-скилл, вызовов не имеет). Они не готовят хендофф в следующий скилл — заканчивают обычным коротким результатом.
+**Вне pipeline (standalone, по запросу):** `ask-nmt`, `triz-resolve`, `video-distill`, `helpx5`, `epic-legal-review`, `tracker-sync`, `todo` (быстрый захват задач в GitHub Issues — не путать с `agile-coach`/`tracker-sync`), `analytics-insights`, `pipeline-retro`, все `marketing-*`, `go`/`goon` (утилиты фоновых сессий), `response-optimizer` (хук-скилл, вызовов не имеет). Они не готовят хендофф в следующий скилл — заканчивают обычным коротким результатом.
 
 ## Реальные гейты ⏸
 
