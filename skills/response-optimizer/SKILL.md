@@ -1,22 +1,35 @@
 ---
 name: response-optimizer
-description: Фоновый оптимизатор ответов — НЕ вызывается руками и НЕ активируется по триггер-фразам. Работает автоматически через хуки Claude Code, настроенные в ~/.claude/settings.json — SessionStart подсовывает full.md при старте сессии, UserPromptSubmit подсовывает light.md на каждый ввод пользователя. Эта карточка нужна только как источник файлов и инструкция подключения на новой машине.
+description: Фоновый хук стиля — НЕ вызывается руками и НЕ активируется по триггер-фразам. Работает автоматически через хуки Claude Code в ~/.claude/settings.json — UserPromptSubmit подсовывает style-light.md (выжимку _shared/communication-style.md) на каждый ввод пользователя, SessionStart пересобирает выжимку. Эта карточка нужна только как инструкция подключения на новой машине.
 recommended_model: sonnet
 ---
 
-# response-optimizer — фоновый оптимизатор ответов
+# response-optimizer — фоновый хук стиля
 
-Скилл не участвует в pipeline и не вызывается вручную. Его файлы уходят в контекст хуками Claude Code:
+Скилл не участвует в pipeline и не вызывается вручную. Держит правила стиля общения
+(zero-slop, бизнес-язык, approve-список) у конца контекста — рядом с последним сообщением,
+где они не «выветриваются» в длинной сессии:
 
-- `full.md` — полный свод правил, инъекция при старте сессии (`SessionStart`, matcher `startup|clear|compact` — правила возвращаются после `/clear` и компакта контекста); тем же хуком целиком подаётся `_shared/communication-style.md`;
-- `light.md` — выжимка, инъекция на каждый ввод пользователя (`UserPromptSubmit`, матчеров не имеет);
-- `style-light.md` — выжимка стиля, идёт на каждый ввод вместе с `light.md`. Собирается скриптом `build-style-light.py` из блоков `<!-- light:... -->` в `_shared/communication-style.md` (пересборка — первым хуком `SessionStart`); руками не править — перезаписывается.
+- `style-light.md` — выжимка стиля, инъекция на каждый ввод пользователя (`UserPromptSubmit`).
+  Собирается скриптом `build-style-light.py` из блоков `<!-- light:... -->` в
+  `_shared/communication-style.md`; руками не править — перезаписывается.
+- `build-style-light.py` — пересборка выжимки; гоняется хуком `SessionStart`
+  (matcher `startup|clear|compact`), чтобы правки communication-style подхватывались.
+  `--check` — проверить актуальность без записи.
 
-Файлы-инъекции — без frontmatter: они целиком попадают в контекст.
+Полная версия правил живёт в `_shared/communication-style.md` и в контекст хуками
+не подаётся: скиллы читают её сами, когда готовят артефакт для людей.
+История: раньше хуки инжектили ещё `full.md` + `light.md` (универсальный «Response
+Optimizer») и полный communication-style на старте — убрано 2026-08-21 как дубль
+глобального CLAUDE.md (~2.5 тыс. токенов на сообщение → ~1.5 тыс.).
+
+Файл-инъекция — без frontmatter: он целиком попадает в контекст.
 
 ## Подключение на новой машине
 
-В `~/.claude/settings.json` задать `env.WIBESKILLS` (путь к библиотеке на этой машине; тот же путь — фоллбэком в `${WIBESKILLS:-...}`) и блок `hooks`. `2>/dev/null || true` — чтобы отсутствие файла не валило хук:
+В `~/.claude/settings.json` задать `env.WIBESKILLS` (путь к библиотеке на этой машине;
+тот же путь — фоллбэком в `${WIBESKILLS:-...}`) и блок `hooks`. `2>/dev/null || true` —
+чтобы отсутствие файла не валило хук:
 
 ```json
 "env": {
@@ -27,16 +40,13 @@ recommended_model: sonnet
     {
       "matcher": "startup|clear|compact",
       "hooks": [
-        { "type": "command", "command": "python3 \"${WIBESKILLS:-/home/coder/Work/3. projects/WibeSkills}/skills/response-optimizer/build-style-light.py\" 2>/dev/null || true" },
-        { "type": "command", "command": "cat \"${WIBESKILLS:-/home/coder/Work/3. projects/WibeSkills}/skills/response-optimizer/full.md\" 2>/dev/null || true" },
-        { "type": "command", "command": "cat \"${WIBESKILLS:-/home/coder/Work/3. projects/WibeSkills}/skills/_shared/communication-style.md\" 2>/dev/null || true" }
+        { "type": "command", "command": "python3 \"${WIBESKILLS:-/home/coder/Work/3. projects/WibeSkills}/skills/response-optimizer/build-style-light.py\" 2>/dev/null || true" }
       ]
     }
   ],
   "UserPromptSubmit": [
     {
       "hooks": [
-        { "type": "command", "command": "cat \"${WIBESKILLS:-/home/coder/Work/3. projects/WibeSkills}/skills/response-optimizer/light.md\" 2>/dev/null || true" },
         { "type": "command", "command": "cat \"${WIBESKILLS:-/home/coder/Work/3. projects/WibeSkills}/skills/response-optimizer/style-light.md\" 2>/dev/null || true" }
       ]
     }
@@ -44,11 +54,13 @@ recommended_model: sonnet
 }
 ```
 
-В боевом settings.json в `UserPromptSubmit` стоит ещё хук `skills/go/notify-hook.sh` — это часть скилла `go`, к response-optimizer не относится.
+В боевом settings.json в `UserPromptSubmit` стоит ещё хук `skills/go/notify-hook.sh` —
+это часть скилла `go`, к response-optimizer не относится.
 
-Проверка: `jq . ~/.claude/settings.json` (валидность), затем новая сессия — при старте в контексте полный текст, с каждым вводом приходит лёгкая версия. В VS Code изменения подхватываются после Restart Extension Host.
+Проверка: `jq . ~/.claude/settings.json` (валидность), затем новая сессия — с каждым
+вводом приходит выжимка стиля. В VS Code изменения подхватываются после Restart Extension Host.
 
 ## Стоимость по токенам
 
-- `full.md` + `communication-style.md` — разово при старте / `/clear` / компакте.
-- `light.md` + `style-light.md` — на каждый ввод; урезать — сокращать `light.md` и light-блоки в `communication-style.md` (style-light.md пересоберётся сам).
+`style-light.md` (~4.8 КБ) — на каждый ввод. Урезать — сокращать light-блоки
+в `_shared/communication-style.md` (выжимка пересоберётся сама на старте сессии).
