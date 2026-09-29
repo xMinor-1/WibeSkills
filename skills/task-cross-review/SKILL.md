@@ -49,6 +49,7 @@ git log <MAIN_BRANCH>..feature/<epic-slug>/<story-slug>
 | Красные тесты не подменены | `git diff` по путям тестов из пакета | `BLOCK` |
 | Тесты и типы зелёные | `VERIFY_CMD` | вернуть в build, ревью не тратить |
 | Стилистика, мёртвый код, импорты | линтер из `LOCAL_CHECK` | чинится без ревьюера |
+| Разметка событий: код ↔ реестр, маршруты с решением | `EVENTS_CHECK` (модуль A project-config; обычно внутри `VERIFY_CMD`) | `CHANGES REQUESTED` |
 | События долетают до `ANALYTICS_PROVIDER` | e2e-фикстура (`task-test` Шаг 3) | `CHANGES REQUESTED` |
 
 Затем **две линзы параллельно** одним сообщением — `Agent` tool, read-only, isolation не нужен.
@@ -58,7 +59,7 @@ git log <MAIN_BRANCH>..feature/<epic-slug>/<story-slug>
 > «Ревью diff на безопасность: OWASP Top 10 (XSS, инъекции, CSRF, broken auth, sensitive exposure), валидация входов на сервере, требования юр-режима LEGAL_REGIME (персональные данные: шифрование/хеши, не логируем plain; audit-логи на ключевых действиях). Список конкретных уязвимостей с file:line.»
 
 ### 2. Соответствие AC и архитектуре
-> «Открой `DOCS_ROOT/<epic-slug>/PRD.md` (acceptance criteria, edge cases) и проектный CLAUDE.md (`ARCH_PATTERN`). Сравни реализацию с AC: что покрыто, что не покрыто, где поведение противоречит PRD, все ли edge cases обработаны. Отдельно — нарушения слоёв архитектуры и дублирование существующего кода. Только high-confidence находки с file:line.»
+> «Открой `DOCS_ROOT/<epic-slug>/PRD.md` (acceptance criteria, edge cases) и проектный CLAUDE.md (`ARCH_PATTERN`). Сравни реализацию с AC: что покрыто, что не покрыто, где поведение противоречит PRD, все ли edge cases обработаны. Отдельно — нарушения слоёв архитектуры и дублирование существующего кода. Отдельно — разметка: новые действия, экраны, окна, развилки и ошибки из diff, у которых нет события (сверь с `EVENTS_REGISTRY` и таблицей task-build Шаг 4), и нагрузка с текстом или персональными данными. Только high-confidence находки с file:line.»
 
 Обе линзы ищут то, чего **нет ни в одном тесте**: расхождение намерения и реализации. То, что
 ловится скриптом, им не поручай — это дублирование за деньги.
@@ -83,7 +84,7 @@ git log <MAIN_BRANCH>..feature/<epic-slug>/<story-slug>
 **Правила вердикта:**
 - Любой блокер по безопасности или юр-режиму → `BLOCK`
 - **Diff вышел за «Разрешено править» пакета Task** → `BLOCK` (см. ниже)
-- Непокрытые AC или незатреканные events → `CHANGES REQUESTED`
+- Непокрытые AC или незатреканные events (в том числе новое действие, экран или ошибка без события; красный `EVENTS_CHECK`) → `CHANGES REQUESTED`
 - Только minor/nits → `APPROVE`
 
 **Границы пакета (если у Task есть `DOCS_ROOT/<epic-slug>/tasks/<task-slug>.md`).**
