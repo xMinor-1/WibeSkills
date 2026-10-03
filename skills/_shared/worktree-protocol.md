@@ -27,7 +27,7 @@ git worktree add ../<project>-<story-slug> -b feature/<epic-slug>/<story-slug> o
 cd ../<project>-<story-slug>
 ```
 
-**Любой следующий скилл Story** (`task-cross-review`, `task-test`, `task-docs`, `task-ship`, или `task-build` следующей Task) запускается в **новом чате**, но worktree уже существует на диске — `git worktree list`, `cd` в него, `git status`. Не создавай дубль. Состояние Story между чатами — в самой ветке + в `stories.md`.
+**Любой следующий скилл Story** (`task-cross-review`, `task-test`, `task-docs`, `task-ship`, или `task-build` следующей Task) стартует с **чистым контекстом** (сабагент или новый чат в ручном режиме), но worktree уже существует на диске — `git worktree list`, `cd` в него, `git status`. Не создавай дубль. Состояние Story между шагами — в самой ветке + в `stories.md`.
 
 ## Workflow-режим (`delivery-run`)
 

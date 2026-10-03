@@ -51,8 +51,8 @@ X5-продукт → `enterprise` · side-проект → `indie` · «уже 
 
 ## Хендофф
 
-Стандартный блок по [handoff-protocol.md](../_shared/handoff-protocol.md). Промпт обязан включать:
-скилл, slug, путь к epic-meta.md, TRACK и MODE.
+Переход по [handoff-protocol.md](../_shared/handoff-protocol.md): следующий шаг запускается сразу — диалоговый
+в этом чате, автономный сабагентом. Промпт шага обязан включать: скилл, slug, путь к epic-meta.md, TRACK и MODE.
 
 ## Принципы
 

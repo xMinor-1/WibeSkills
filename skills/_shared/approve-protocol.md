@@ -19,12 +19,12 @@
 - Локальные правки кода в feature-ветке
 - Создание / обновление файлов в `DOCS_ROOT/<epic-slug>/` (включая `stories.md`)
 - Auto-rollup статуса Story/эпика после изменения статуса Task
-- Подготовка хендофф-блока для следующего чата (см. [handoff-protocol.md](handoff-protocol.md))
+- Запуск следующего шага pipeline сабагентом (см. [handoff-protocol.md](handoff-protocol.md))
 - **Любые технические решения** (модель LLM, паттерн, npm-пакет, алгоритм, структура файлов)
 
-## Approve в Workflow-режиме (`delivery-run`)
+## Approve в сабагенте
 
-Сабагент внутри Workflow approve-операции **не выполняет и не ждёт** — возвращает оркестратору статус `needs_approve`, ран завершается на этой границе, решение принимает человек между сегментами (контракт — [delivery-workflow.md](delivery-workflow.md)). Список approve-операций тот же, что выше.
+Сабагент — шаг pipeline, запущенный дирижёром, или стадия Workflow в `delivery-run` — approve-операции **не выполняет и не ждёт**: возвращает статус `needs_approve` с планом. Дирижёр спрашивает человека и передаёт ответ тому же сабагенту ([handoff-protocol.md](handoff-protocol.md)); в Workflow ран завершается на этой границе, решение — между сегментами ([delivery-workflow.md](delivery-workflow.md)). Список approve-операций тот же, что выше.
 
 ## Формат плана для approve
 

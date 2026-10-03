@@ -18,7 +18,7 @@ recommended_model: opus
 
 Промпт сказал «Workflow-режим» — работаешь по контракту `../_shared/delivery-workflow.md`:
 - **Пропусти** Шаг 2 (Story-worktree): работай в выданном изолированном worktree, коммить в своей task-ветке.
-- **Пропусти** Шаг 8 (хендофф-блок) и обновления статусов в `stories.md` (Старт п.2, Шаг 7) — статусы пишет оркестратор.
+- **Пропусти** Шаг 8 (хендофф) и обновления статусов в `stories.md` (Старт п.2, Шаг 7) — статусы пишет оркестратор.
 - Approve-операции (миграции, auth/payments) **не выполняй** — верни `needs_approve`.
 - Верни structured output: status (`ok`/`needs_approve`/`blocked`), branch, sha, затронутые файлы, 1-2 строки итога.
 - TRACK=prd/fast (нет preview/tech-spec): работай от PRD-machine (lite-tech-spec-секция); UI — без preview-эталона, отметь это в итоге.
@@ -69,7 +69,7 @@ Approve **нужен** если задача затрагивает: мигра�
 
 Следуй `../_shared/worktree-protocol.md`: **1 Story = 1 worktree = 1 ветка** `feature/<epic-slug>/<story-slug>`.
 - Первая Task Story — создай worktree из `MAIN_BRANCH`.
-- Следующая Task той же Story — worktree уже существует на диске (этот скилл — новый чат), `cd` в него.
+- Следующая Task той же Story — worktree уже существует на диске (шаг стартует с чистым контекстом), `cd` в него.
 
 ## Шаг 3: Реализация (Clean Architecture, паттерн ARCH_PATTERN)
 
