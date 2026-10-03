@@ -105,7 +105,7 @@
 - **PLATFORM_FOCUS** — <mobile-web | iOS | Android | desktop-web | mix — основная платформа для подбора паттернов>
 - **UX_FOUNDATION_DOC** — <путь к базе паттернов | пусто = `DOCS_ROOT/ux-foundation/pattern-library.md` | свой док, напр. STYLE-GUIDE дизайн-системы>
 
-## E. Методология NMT / AJTBD (`market-research`, `craft-value-proposition`, `ask-nmt`, `epic-prd`, `marketing-*`)
+## E. Методология NMT / AJTBD (`market-research`, `craft-value-proposition`, `epic-prd`, `marketing-*`)
 
 - **NMT_CANON_ROOT** — <путь к канону | пусто = дефолт `<библиотека скиллов>/../canon/Next-Move-Theory-Canon/` (submodule в WibeSkills)>
 - **COURSE_NOTES_ROOT** — <путь к приватному слою конспектов курса (mechanics-navigator.md — 82 механики, theory-canon.md — флаги F1–F33) | нет>

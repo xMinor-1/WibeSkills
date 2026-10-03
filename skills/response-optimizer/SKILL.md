@@ -2,6 +2,7 @@
 name: response-optimizer
 description: Фоновый хук стиля — НЕ вызывается руками и НЕ активируется по триггер-фразам. Работает автоматически через хуки Claude Code в ~/.claude/settings.json — UserPromptSubmit подсовывает style-light.md (выжимку _shared/communication-style.md) на каждый ввод пользователя, SessionStart пересобирает выжимку. Эта карточка нужна только как инструкция подключения на новой машине.
 recommended_model: sonnet
+disable-model-invocation: true
 ---
 
 # response-optimizer — фоновый хук стиля
